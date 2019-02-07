@@ -35,10 +35,20 @@ and open the file with a text editor.
 Add the local and new virtual host to the systems hosts file. 
 
 127.0.0.1 localhost 
-127.0.0.1 projectname 
+127.0.0.1 projectname.test
 
 *** Assuming setup went smoothly you can now open the project in your IDE. ***
 Your project will be created in the directory that you wrote the composer command into, 
 for us this should have been C:/users/xampp/htdocs/projectname. 
 
 We can load our webpage once we turn on the apache server using the URL: projectname.test
+
+Useful 'php artisan' commands
+-----------------------------
+php artisan route:list 
+
+php artisan make:migration create_table --create=table_name
+
+php artisan make:migration add_to_table --table=table_name
+
+php artisan migrate:refresh
