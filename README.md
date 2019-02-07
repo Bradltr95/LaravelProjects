@@ -38,3 +38,7 @@ Add the local and new virtual host to the systems hosts file.
 127.0.0.1 projectname 
 
 *** Assuming setup went smoothly you can now open the project in your IDE. ***
+Your project will be created in the directory that you wrote the composer command into, 
+for us this should have been C:/users/xampp/htdocs/projectname. 
+
+We can load our webpage once we turn on the apache server using the URL: projectname.test
