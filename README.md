@@ -44,11 +44,13 @@ for us this should have been C:/users/xampp/htdocs/projectname.
 We can load our webpage once we turn on the apache server using the URL: projectname.test
 
 Useful 'php artisan' commands
------------------------------
-php artisan route:list 
-
+----------------------------- 
 php artisan make:migration create_table --create=table_name
 
 php artisan make:migration add_to_table --table=table_name
 
-php artisan migrate:refresh
+php artisan migrate:refresh, rollback
+
+php artisan make:controller --resource MyController
+
+php artisan route:list
