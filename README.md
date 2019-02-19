@@ -54,3 +54,5 @@ php artisan migrate:refresh, rollback
 php artisan make:controller --resource MyController
 
 php artisan route:list
+
+php artisan make:model Posts // this will assume we have a table names posts. 
