@@ -4,12 +4,10 @@ use App\Post;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| QUICK REFERENCE USING ROUTES AS A QUICK EXAMPLE 
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| Below are various ways to use laravel using Raw Queries, Eloquent, Routes, ect. 
 |
 */
 
@@ -30,6 +28,9 @@ Route::get('/admin/home/page/34', array('as'=>'admin.home' ,function() {
     return "This url is " . $url;
 }));
 
+/*-------------------------------------------------------------
+| Examples using raw queries 
+|--------------------------------------------------------------
 /*-------------------------------------------------------------
 | Create a route that will insert data into the database.
 |--------------------------------------------------------------*/
@@ -79,17 +80,21 @@ Route::get('/delete', function(){
    }
 });
 
-//Route::resource('posts', 'PostsController');
+// -- Several Controller Examples 
+--------------------------------------------
+//Route::resource('posts', 'PostsController'); 
 
 //Route::get('/contact', 'PostsController@contact');
 
 //Route::get('post/{id}/{name}', 'PostsController@show_post');
 
 /*-------------------------------------------------------------
-| Learning ELOQUENT
+| Examples using ELOQUENT
+|--------------------------------------------------------------
 |--------------------------------------------------------------
 | READING data with ELOQUENT - read
 |--------------------------------------------------------------*/
+// --READING THE TITLE 
 Route::get('/read', function(){
     $posts = App\Post;
     $posts = Post::all();
@@ -99,33 +104,41 @@ Route::get('/read', function(){
     }
 });
 
+// --READING USING A SPECIFIC ID 
 Route::get('/find', function(){
     $post = Post::find(4);
 
     return $post->title;
 });
 
+// --READING SELECTED ID, TAKE AND GET METHOD 
 Route::get('/findwhere', function(){
    $posts = Post::where('id', 5)->orderBy('id', 'desc')->take(1)->get();
 
    return $posts;
 });
 
+// --TWO MORE METHODS ON FINDING DATA 
 Route::get('/findmore', function(){
-    //$posts = Post::findOrFail(4);
+    // METHOD 1
+    $posts = Post::findOrFail(4);
 
-    //return $posts;
-    // ----------
+    return $posts;
+    
+     /* OR */ 
+    
+    // METHOD 2
     $posts = Post::where('id', '=', 5)->firstOrFail();
 
-    //print($posts['title']);
-    //return $posts;
+    //print($posts['title']); example on printing the data 
+    
+    return $posts; 
 });
 
 /*-------------------------------------------------------------
 | INSERTING data with ELOQUENT - insert
 |--------------------------------------------------------------*/
-// INSERTING NEW DATA
+// ---INSERTING NEW DATA
 Route::get('/basicinsert', function(){
     // Crate the Post object
     $post = new Post;
@@ -138,7 +151,7 @@ Route::get('/basicinsert', function(){
     $post->save();
 });
 
-// UPDATING DATA IN THE
+// ---UPDATING DATA IN THE
 Route::get('/basicinsert2', function(){
     // Find a specific post ID
     $post = Post::find(4);
@@ -170,14 +183,14 @@ Route::get('/update', function() {
 /*-------------------------------------------------------------
 | DELETING data with ELOQUENT - delete
 |--------------------------------------------------------------*/
-// DELETE SINGLE USING STATIC FIND FUNCTION
+// ---DELETE SINGLE USING STATIC FIND FUNCTION
 Route::get('/delete', function(){
     $post = Post::find(4);
 
     $post->delete();
 });
 
-// DESTROY MULTI OR SPECIFIC
+// ---DESTROY MULTI OR SPECIFIC
 Route::get('/delete2', function(){
     // destroy multi
     Post::destroy[5,6,7];
